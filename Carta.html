@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Carta Especial ❤️</title>
+    <link rel="icon" href="img/coração.jpg">
+    <link rel="stylesheet" href="estilo.css"> 
+    <link rel="stylesheet" href="estilo_carta.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Satisfy&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container-pagina-carta">
+
+        <div id="envelopeFechado" class="envelope">
+            <div class="envelope-aba"></div>
+            <div class="envelope-corpo">
+                <p class="para-quem">Para Meu Eterno Amor</p>
+                <p class="instrucao-clique">(Clique com carinho para abrir)</p>
+            </div>
+            <div class="envelope-selo">💌</div>
+        </div>
+
+        <div id="cartaAberta" class="carta-conteudo" style="display: none;">
+            <h1>Para meu AMOR <span class="nome-destinatario">Lorena</span>,</h1>
+            <p> Meu amor, sei que não sou muito bom escrevendo, mas só quero dizer que você é a melhor coisa que já aconteceu comigo. 
+                Você é uma luz na minha vida, uma estrela que brilha mais do que todas as outras. Neste 1 ano em que estamos juntos,
+             aprendi a amar de verdade e a valorizar as coisas simples da vida junto com você. Sabe, por mais difícil que possam ser as coisas,
+              com você tudo fica mais fácil e leve de ser feliz. Sua risada é a melhor música que eu já ouvi, 
+              sua presença é a melhor companhia que eu já tive e senti. Te amo muito, sabia? Você é a minha certeza.
+            </p>
+            <p>
+                Eu te amo mais do que o universo pode chegar a existir. Posso ser complicado, 
+                posso ser chato às vezes e fazer muita burrada, mas quero que saiba que sou apenas um cara tentando fazer uma mulher incrível,
+                 que é você, feliz, por mais difícil que seja. Já disse milhões de vezes que o meu objetivo é fazê-la sorrir. Se eu conseguir pelo menos tirar um sorriso do seu rosto,
+                  nem que seja por um segundo, meu dia está feito! Sou apaixonado por você. E, por isso, gostaria de agradecer por cada momento, cada sorriso, cada risada, cada abraço,
+                   cada beijo e cada palavra que me diz que você é minha vida. Meu amor, eu te amo com todas as forças do mundo! E, como o Stitch disse: "Ohana quer dizer família, e família quer dizer nunca abandonar ou esquecer."
+                    E, com isso, nunca vou te abandonar ou esquecer. Sempre vou estar por você e com você, meu amor. <strong>EU TE AMO</strong>!
+                 Muito obrigado por estar na minha vida e que este Dia dos Namorados se prolongue pelo resto das nossas vidas. <strong>FELIZ DIA DOS NAMORADOS!</strong>
+                 <img src="img/STITCH.png" alt="STITCH">
+                
+            </p>
+            
+            
+            <p class="assinatura-carta">
+                Com todo o amor que há em mim,<br>
+                <span class="nome-remetente">João Vitor</span>
+            </p>
+            
+            <button id="botaoFecharCarta" class="botao-acao-carta">Fechar Carta</button>
+        </div>
+
+    </div>
+
+    <script>
+        // Seleciona os elementos do DOM
+        const envelope = document.getElementById('envelopeFechado');
+        const carta = document.getElementById('cartaAberta');
+        const botaoFechar = document.getElementById('botaoFecharCarta');
+
+        // Evento para abrir a carta
+        envelope.addEventListener('click', function() {
+            // Adiciona uma classe para animar o desaparecimento do envelope
+            envelope.classList.add('abrindo'); 
+            
+            // Espera a animação do envelope terminar (opcional, ajuste o tempo)
+            setTimeout(function() {
+                envelope.style.display = 'none'; // Esconde o envelope
+                envelope.classList.remove('abrindo'); // Remove a classe para resetar
+                
+                carta.style.display = 'block'; // Mostra a carta
+                carta.classList.add('revelada'); // Adiciona classe para animar a entrada da carta
+            }, 500); // 500ms = 0.5s (tempo da animação de 'abrindo')
+        });
+
+        // Evento para fechar a carta
+        botaoFechar.addEventListener('click', function() {
+            carta.classList.remove('revelada'); // Remove classe para animar a saída
+            
+             setTimeout(function() {
+                carta.style.display = 'none'; // Esconde a carta
+                envelope.style.display = 'flex'; // Mostra o envelope novamente (ou 'block', dependendo do seu CSS original)
+            }, 500); //  500ms = 0.5s (tempo da animação de 'saindo' - se houver)
+        });
+    </script>
+                     <a id="voltar" href="index.html" style="text-decoration: none">Voltar</a>
+
+</body>
+</html>

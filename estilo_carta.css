@@ -1,0 +1,229 @@
+/* Estilos para a página da carta */
+body {
+    /* Se já tens um fundo no teu estilo.css principal, podes remover estas linhas de body */
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #ffc3e1, #ff6b9d);
+    background-size: 400% 400%;
+    animation: gradientShiftPage 18s ease infinite;
+    font-family: 'Roboto', sans-serif;
+    color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+@keyframes gradientShiftPage {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container-pagina-carta {
+    perspective: 1200px; /* Para possíveis efeitos 3D */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilo do Envelope Fechado */
+.envelope {
+    width: 320px;
+    height: 220px;
+    background-color: #fce4ec; /* Rosa muito pálido */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    position: relative; /* Para posicionar a aba e o selo */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Adiciona 'margin: auto;' se não estiver usando o container-pagina-carta com flex */
+}
+
+.envelope:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+/* Animação para quando o envelope está "abrindo" */
+.envelope.abrindo {
+    transform: scale(0.9) rotateY(90deg); /* Exemplo de animação de saída */
+    opacity: 0;
+    transition: transform 0.5s ease-in, opacity 0.4s ease-in;
+}
+
+.envelope-aba {
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent; /* Metade da largura do envelope */
+    border-right: 160px solid transparent; /* Metade da largura do envelope */
+    border-top: 110px solid #ffc1d5;      /* Cor da aba (rosa claro), altura da aba */
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 12px 12px 0 0; /* Só arredonda cantos superiores da aba */
+    z-index: 1;
+}
+
+.envelope-corpo {
+    padding: 15px;
+    text-align: center;
+    z-index: 2; /* Acima da aba */
+    margin-top: 90px; /* Ajuste para o texto não ficar sob a aba */
+    color: #8a4d5c;
+}
+
+.para-quem {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.9em;
+    margin-bottom: 8px;
+    color: #d81b60; /* Rosa mais forte para o nome */
+}
+
+.instrucao-clique {
+    font-size: 0.85em;
+    font-style: italic;
+    color: #a26b77;
+}
+
+.envelope-selo {
+    position: absolute;
+    bottom: 12px;
+    right: 18px;
+    font-size: 2.8em;
+    opacity: 0.6;
+    z-index: 3;
+    transform: rotate(-15deg);
+}
+
+
+/* Estilo da Carta Aberta */
+.carta-conteudo {
+    background-color: #fffdf9; /* Um branco levemente amarelado, cor de papel antigo */
+    padding: 30px 40px;
+    border: 1px solid #f4e9de; 
+    border-radius: 10px;
+    box-shadow: 0 10px 35px rgba(80, 40, 40, 0.12);
+    max-width: 650px;
+    margin: 20px auto;
+    line-height: 1.75;
+    color: #5d4037; /* Tom de sépia para o texto */
+    font-size: 1.05em;
+    opacity: 0; /* Começa invisível para animar a entrada */
+    transform: translateY(30px) scale(0.95); /* Posição inicial para animação */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Quando a carta é revelada */
+.carta-conteudo.revelada {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.carta-conteudo h1 {
+    font-family: 'Satisfy', cursive;
+    color: #c2185b; /* Rosa escuro, usado anteriormente */
+    font-size: 2.8em;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.carta-conteudo p {
+    font-family: 'Roboto', serif; /* Uma fonte serifada para dar um ar clássico */
+    margin-bottom: 22px;
+}
+
+.carta-conteudo .nome-destinatario,
+.carta-conteudo .memoria-especial,
+.carta-conteudo .nome-remetente {
+    color: #e91e63; /* Destaque para nomes e memórias */
+    font-weight: bold;
+}
+
+.assinatura-carta {
+    text-align: right;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6em;
+    margin-top: 35px;
+    color: #c2185b;
+}
+
+.assinatura-carta .nome-remetente {
+    font-size: 1.1em; /* Para o nome na assinatura */
+    display: block;
+    margin-top: 5px;
+}
+
+/* Estilo do Botão de Fechar (pode reutilizar/ajustar a classe .botao se já tiver) */
+.botao-acao-carta {
+    display: block;
+    margin: 40px auto 10px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #ff7eab, #e91e63);
+    color: white;
+    border: none;
+    border-radius: 50px; /* Botão bem arredondado */
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 3px 7px rgba(233, 30, 99, 0.4);
+    transition: all 0.3s ease;
+}
+
+.botao-acao-carta:hover {
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    box-shadow: 0 5px 10px rgba(194, 24, 91, 0.5);
+    transform: translateY(-2px);
+}
+/* Estilos para o link/botão "Voltar" com ID #voltar */
+#voltar {
+    display: inline-block; /* Permite definir padding, margens, etc. */
+    padding: 10px 20px;    /* Espaçamento interno: 10px em cima/baixo, 20px nas laterais */
+    margin-top: 25px;      /* Espaço acima do link (ajuste conforme necessário) */
+    margin-bottom: 15px;   /* Espaço abaixo do link (ajuste conforme necessário) */
+
+    background-color: rgba(255, 255, 255, 0.7); /* Fundo branco semi-transparente */
+    /* Ou uma cor sólida suave, como: background-color: #fce4ec; (rosa bem pálido) */
+    
+    color: #c2185b;           /* Cor do texto: um tom de rosa escuro do tema */
+    
+    text-decoration: none;    /* Garante que não há sublinhado */
+    
+    font-family: 'Roboto', sans-serif; /* Fonte padrão para legibilidade */
+    font-size: 0.95em;        /* Tamanho da fonte ligeiramente menor */
+    font-weight: 500;         /* Peso da fonte (normal para semi-negrito) */
+    
+    border: 1px solid #ffc1d5; /* Borda sutil rosa claro */
+    border-radius: 20px;      /* Cantos arredondados */
+    
+    cursor: pointer;          /* Cursor de mãozinha */
+    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra muito discreta */
+    
+    transition: all 0.3s ease-in-out; /* Transições suaves para todos os efeitos */
+}
+
+/* Efeito ao passar o mouse por cima do link "Voltar" */
+#voltar:hover {
+    background-color: #e91e63; /* Cor de fundo rosa vibrante ao passar o mouse */
+    color: #ffffff;           /* Texto branco ao passar o mouse */
+    border-color: #e91e63;    /* Borda acompanha a cor de fundo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra um pouco mais acentuada */
+    transform: translateY(-2px) scale(1.02); /* Leve movimento para cima e aumento */
+}
+
+/* Efeito ao clicar no link "Voltar" (opcional, para feedback) */
+#voltar:active {
+    background-color: #ad1457; /* Tom mais escuro ao clicar */
+    color: #fdeced;           /* Cor de texto clara */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra reduzida */
+    transform: translateY(0px) scale(1); /* Retorna à posição e tamanho originais */
+}
